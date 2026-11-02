@@ -38,5 +38,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Mientras Pages siga en "Deploy from a branch", GitHub publica también el código sin compilar.
+      # Esperamos a que termine para que la versión compilada sea la última en publicarse.
+      - if: github.event_name == 'push'
+        run: sleep 120
       - id: deployment
         uses: actions/deploy-pages@v4
