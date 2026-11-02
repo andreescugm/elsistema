@@ -1,3 +1,5 @@
 node_modules
 dist
 *.local
+public/avisos.ics
+tsconfig.tsbuildinfo
